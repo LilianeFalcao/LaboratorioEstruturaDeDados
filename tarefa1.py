@@ -1,0 +1,5 @@
+import sys
+
+lista = []
+
+
