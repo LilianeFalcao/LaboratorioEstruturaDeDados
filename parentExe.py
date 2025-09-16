@@ -14,9 +14,19 @@ def is_balanced(expression):
     pilha = Stack()
 
     #------- COLOQUE SEU CÓDIGO AQUI -------
+    for e in expression:
+        if e in "{([":
+            pilha.push(e)
+        elif e in "}])":
+            if pilha.is_empty(): 
+                return False
+            topo = pilha.pop()
+        if (e == "}" and topo != "{") or \
+            (e == ")" and topo != "(") or \
+            (e == "]" and topo != "["):
+                return False
 
-
-
+    return pilha.is_empty()
 
     #---------------------------------------
 

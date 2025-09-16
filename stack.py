@@ -65,7 +65,7 @@ class Stack:
         Empilha (push) um novo elemento na pilha.
         """
         self.singly_linked_list.insert_at_top(data)
-        # print(f"{data} empilhado com sucesso.")
+        #print(f"{data} empilhado com sucesso.")
 
     def pop(self):
         """
