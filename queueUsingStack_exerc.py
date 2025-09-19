@@ -11,19 +11,20 @@ class QueueUsingStacks:
 
     def enqueue(self, data):
         # FAZER
-        if self.pilha_principal and self.pilha_aux is None:
-            self.pilha_principal.push(data)
-            self.pilha_aux.push(data)
-            print(self.pilha_principal)
-        
-
-    #def dequeue(self):
+        self.pilha_principal.push(data)
+       
+    def dequeue(self):
         # FAZER
-
+        if self.pilha_aux.is_empty():
+            while not self.pilha_principal.is_empty():
+                self.pilha_aux.push(self.pilha_principal.pop())
+        if self.pilha_aux.is_empty():
+            raise IndexError("Fila está vazia - não é possível remover")
+        return self.pilha_aux.pop()
 
     def is_empty(self):
         # FAZER
-        return self.pilha_principal.is_empty()
+        return self.pilha_principal.is_empty() and self.pilha_aux.is_empty()
 
 
     def __str__(self):
@@ -73,8 +74,8 @@ if __name__ == "__main__":
     print(fila)
 
     print("\nRemovendo dois elementos:")
-    #print(fila.dequeue())
-   # print(fila.dequeue())
+    print(fila.dequeue())
+    print(fila.dequeue())
     fila.enqueue(40)
 
     print("\nEstado atual da fila:")
@@ -83,7 +84,7 @@ if __name__ == "__main__":
     print("\nA fila está vazia?", fila.is_empty())
 
     print("\nRemovendo mais um elemento:")
-   # print(fila.dequeue())
+    print(fila.dequeue())
 
     print("\nA fila está vazia?", fila.is_empty())
 
