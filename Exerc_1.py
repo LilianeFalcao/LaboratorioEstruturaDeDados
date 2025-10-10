@@ -21,11 +21,11 @@ def buscaLinear(arr, target):
     print (arr)
     for e in range(len(arr)):
         if arr[e] == target:
-            return e   
+            return e
     return "não encontrado"
         
 arr = [93, 67, 4, 8, 91, 76, 95, 1, 63, 96]
-target = 1
+target = 9
 
 print("Target encontrado na posição: ",buscaLinear(arr, target))
 
@@ -62,4 +62,17 @@ def buscaB(arr, target):
 
     quicksort(arr)
 
-    
+    inicio = 0
+    fim = len(arr) - 1
+    while inicio <= fim:
+        meio = (inicio + fim) // 2
+        if arr[meio] == target:
+            return meio
+        elif arr[meio] < target:
+            inicio = meio + 1
+        else:
+            fim = meio - 1
+    return -1
+
+
+print("Target encontrado na posição: ", buscaB(arr, target))

@@ -18,11 +18,3 @@ Pode ser uma função h_index_linear(citacoes) e outra h_index_binaria(citacoes)
 
 """
 
-
-import random
-
-# Lista de 10 números desordenados
-numeros = random.sample(range(1, 101), 10)
-print(numeros)
-
-
