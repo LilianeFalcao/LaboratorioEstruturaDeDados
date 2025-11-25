@@ -87,22 +87,33 @@ class HashTable:
     """
     def __init__(self, capacity=DEFAULT_CAPACITY):
         self.buckets = DynamicIntArray(capacity)
-        # inicialize cada bucket como LinkedList
         for i in range(capacity):
             self.buckets.set(i, LinkedList())
 
     def _hash(self, key):
-        #COLOQUE SEU CÓDIGO AQUI
-        #Define a Função Hash. Obs.: Key é Chave e Index é o Valor
+        return key % self.buckets.capacity
 
     def insert(self, key):
-        #COLOQUE SEU CÓDIGO AQUI
+        index = self._hash(key)
+        bucket = self.buckets.get(index)
+        
+        if not bucket.search(key):
+            bucket.append(key)
 
     def search(self, key):
-        #COLOQUE SEU CÓDIGO AQUI
+        index = self._hash(key)
+        bucket = self.buckets.get(index)
+        
+        if bucket.search(key):
+            return index 
+        else:
+            return None
 
     def remove(self, key):
-        #COLOQUE SEU CÓDIGO AQUI
+        index = self._hash(key)
+        bucket = self.buckets.get(index)
+        
+        return bucket.remove(key) 
 
     def __str__(self):
         lines = []
@@ -110,40 +121,3 @@ class HashTable:
             bucket = self.buckets.get(i)
             lines.append(f"{i}: {bucket}")
         return "\n".join(lines)
-
-
-if __name__ == "__main__":
-    ht = HashTable()
-
-    # Inserção um a um
-    ht.insert(33)
-    ht.insert(14)
-    ht.insert(7)
-    ht.insert(73)
-    ht.insert(23)
-
-    print("Estado da Hash Table após inserções:")
-    print(ht)
-
-    # Buscas
-    for key in [14, 23, 19]:
-        idx = ht.search(key)
-        if idx is not None:
-            print(f"Buscar {key}: encontrado no índice {idx}")
-        else:
-            print(f"Buscar {key}: elemento não existe")
-
-    # Remoções
-    print(f"Remover 73: {'Sucesso' if ht.remove(73) else 'Falha'}")
-    print(f"Remover 35: {'Sucesso' if ht.remove(35) else 'Falha'}")
-
-    # Busca 73 após remoção
-    idx73 = ht.search(73)
-    if idx73 is not None:
-        print(f"Buscar 73 após remoção: encontrado no índice {idx73}")
-    else:
-        print("Buscar 73 após remoção: elemento não existe")
-
-    # Estado final
-    print("\nEstado final da Hash Table:")
-    print(ht)

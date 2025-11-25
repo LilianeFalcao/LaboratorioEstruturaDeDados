@@ -24,17 +24,23 @@ class BinaryTree:
     
     # Percurso em PÓS ORDEM em ÁRVORE BINÁRIA:
     def postorder_traversal(self, node=None):
-        #todo
+        if node is None:
+            node = self.root
+            if node is None:
+                return
+
+        if node.left:
+            self.postorder_traversal(node.left)
+        if node.right:
+            self.postorder_traversal(node.right)
+        print(node) # Processa a Raiz por último
     
     def height(self, node=None):
         if node is None:
-            
-            return 
-        elif node is not None:
-            return
-            
+            node = self.root
 
-        
+        if node is None or (node.left is None and node.right is None):
+            return 0
 
 def example_tree():
     tree = BinaryTree()
