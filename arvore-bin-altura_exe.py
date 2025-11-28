@@ -33,7 +33,8 @@ class BinaryTree:
             self.postorder_traversal(node.left)
         if node.right:
             self.postorder_traversal(node.right)
-        print(node) # Processa a Raiz por último
+            #a diferença entre o Pos-Ordem e o In-Order é onde chama o print
+        print(node) 
     
     def height(self, node=None):
         if node is None:
@@ -41,6 +42,23 @@ class BinaryTree:
 
         if node is None or (node.left is None and node.right is None):
             return 0
+
+        #Versão do Felizardo
+        #if node is None:
+        #   node = self.root
+        #hleft = 0
+        #hrigth = 0
+        
+        #if node.left:
+        #    hleft = self.height(node.left)
+        #if node.right:
+        #    hrigth = self.height(node.right)
+        #if hrigth > hleft:
+        #    return hrigth + 1
+        #return hrigth + 1
+
+        
+
 
 def example_tree():
     tree = BinaryTree()
