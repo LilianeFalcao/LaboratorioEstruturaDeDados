@@ -59,6 +59,15 @@ class BinaryTree:
         q = Queue()
         q.enqueue(node)
 
+        while not q.is_empty():
+            current_node = q.dequeue()
+            print(current_node.data)
+
+            if current_node.left:
+                q.enqueue(current_node.left)
+            if current_node.right:
+                q.enqueue(current_node.right)
+
         #TO(Não altere o que tem antes e utilize Filas já importadas)
     
     def height(self, node=None):
